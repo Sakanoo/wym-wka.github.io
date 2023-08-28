@@ -64,4 +64,21 @@ body {
 .action-button:hover {
   background-color: #555;
 }
+.slot {
+  height: 100px; /* Możesz dostosować wysokość maszyny */
+  overflow: hidden;
+  position: relative;
+}
+
+.slot p {
+  position: absolute;
+  animation: spin 5s infinite;
+  font-size: 24px;
+  text-align: center;
+}
+
+@keyframes spin {
+  0% { top: 0; }
+  100% { top: -300px; } /* Dostosuj wartość do wysokości maszyny */
+}
 
