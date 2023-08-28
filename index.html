@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
-<title>Wymówki na brak streama</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Wymówki na brak streama</title>
 </head>
 <body>
-  <div id="excuse-container">
-    <p id="excuse-text">Kliknij, aby wylosować wymówkę na brak streama:</p>
-    <button id="generate-button">Losuj wymówkę</button>
+  <div class="container">
+    <h1>Wymówki na brak streama</h1>
+    <div class="slot-machine">
+      <div id="display" class="display"></div>
+      <button id="spin-button" class="spin-button" onclick="spin()">Losuj</button>
+    </div>
   </div>
-  
   <script src="script.js"></script>
 </body>
 </html>
