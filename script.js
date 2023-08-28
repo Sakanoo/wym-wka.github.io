@@ -20,11 +20,12 @@ spinButton.addEventListener("click", () => {
     <button class="action-button" id="next-button">Losuj dalej</button>
   `;
 
-  display.innerHTML = formattedExcuse;
+  result.innerHTML = formattedExcuse; 
   slotMachine.style.display = "none";
   result.style.display = "block";
 
 });
+
 
 copyButton.addEventListener("click", () => {
   const textToCopy = excuseDisplay.textContent;
