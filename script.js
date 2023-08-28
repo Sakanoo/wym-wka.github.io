@@ -4,17 +4,17 @@ const excuses = [
   // Dodaj więcej wymówek...
 ];
 
-const slotMachine = document.querySelector(".slot-machine");
-const spinButton = document.getElementById("spin-button");
+const slotMachine = document.getElementById("slot-machine");
 const result = document.getElementById("result");
 const excuseDisplay = document.getElementById("excuse");
 const copyButton = document.getElementById("copy-button");
 const nextButton = document.getElementById("next-button");
+const spinButton = document.getElementById("spin-button");
 
 spinButton.addEventListener("click", () => {
   const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
-
   excuseDisplay.textContent = randomExcuse;
+
   slotMachine.style.display = "none";
   result.style.display = "block";
 });
