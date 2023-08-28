@@ -13,10 +13,17 @@ const spinButton = document.getElementById("spin-button");
 
 spinButton.addEventListener("click", () => {
   const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
-  excuseDisplay.textContent = randomExcuse;
+  const formattedExcuse = `
+    <div class="nick"><span class="smurf-text">SmerfTV_</span></div>
+    <p class="excuse">${randomExcuse}</p>
+    <button class="action-button" id="copy-button">Skopiuj</button>
+    <button class="action-button" id="next-button">Losuj dalej</button>
+  `;
 
+  display.innerHTML = formattedExcuse;
   slotMachine.style.display = "none";
   result.style.display = "block";
+
 });
 
 copyButton.addEventListener("click", () => {
