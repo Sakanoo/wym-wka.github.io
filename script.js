@@ -4,28 +4,25 @@ const excuses = [
   // Dodaj więcej wymówek...
 ];
 
-const display = document.getElementById("display");
+const overlay = document.getElementById("overlay");
+const excuseDisplay = document.getElementById("excuse");
 const copyButton = document.getElementById("copy-button");
+const backButton = document.getElementById("back-button");
 const spinButton = document.getElementById("spin-button");
 
 spinButton.addEventListener("click", () => {
-  spinButton.disabled = true;
-  copyButton.disabled = true;
   const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
 
-  display.innerHTML = `
-    <div class="smurf-text">SmerfTV_</div>
-    <p>${randomExcuse}</p>
-  `;
+  excuseDisplay.textContent = randomExcuse;
+  overlay.classList.add("active");
+});
 
-  setTimeout(() => {
-    spinButton.disabled = false;
-    copyButton.disabled = false;
-  }, 1000);
+backButton.addEventListener("click", () => {
+  overlay.classList.remove("active");
 });
 
 copyButton.addEventListener("click", () => {
-  const textToCopy = display.textContent;
+  const textToCopy = excuseDisplay.textContent;
   const textArea = document.createElement("textarea");
   textArea.value = textToCopy;
   document.body.appendChild(textArea);
