@@ -1,5 +1,5 @@
 const excuses = [
-      "Przepraszam, ale mam dzisiaj nieplanowane zobowiązania rodzinne.",
+     "Przepraszam, ale mam dzisiaj nieplanowane zobowiązania rodzinne.",
       "Niestety, mam problem z łączem internetowym i nie mogę nadawać dzisiaj.",
       "Z powodu nagłego wydarzenia muszę odwołać dzisiejszy stream.",
       "Chciałem zrobić stream, ale moja kamera się popsuła.",
