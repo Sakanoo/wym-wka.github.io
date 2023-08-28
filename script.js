@@ -1,7 +1,7 @@
 const excuses = [
   "Nie mam dzisiaj czasu.",
   "Techniczne problemy.",
-  // Dodaj więcej wymówek...
+  "Jestem na treningu move, jutro live",
 ];
 
 const slotMachine = document.getElementById("slot-machine");
