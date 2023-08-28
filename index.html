@@ -10,13 +10,16 @@
   <div class="container">
     <h1>Wymówki na brak streama</h1>
     <div class="slot-machine">
-      <div class="display" id="display">
-        <div class="smurf-text">SmerfTV_</div>
-        <p>Losuj wymówkę!</p>
-      </div>
+      <button class="action-button" id="spin-button">Losuj wymówkę</button>
+    </div>
+  </div>
+  <div class="overlay" id="overlay">
+    <div class="overlay-content">
+      <div class="nick">Nick: <span class="smurf-text">SmerfTV_</span></div>
+      <p class="excuse" id="excuse">Tu pojawi się wymówka</p>
       <div class="button-container">
-        <button class="action-button" id="copy-button" disabled>Skopiuj</button>
-        <button class="action-button" id="spin-button">Losuj</button>
+        <button class="action-button" id="copy-button">Skopiuj</button>
+        <button class="action-button" id="back-button">Losuj dalej</button>
       </div>
     </div>
   </div>
