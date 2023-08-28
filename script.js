@@ -13,7 +13,10 @@ spinButton.addEventListener("click", () => {
   copyButton.disabled = true;
   const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
 
-  display.innerHTML = `<p><span class="highlight">SmerfTV_</span>${randomExcuse}</p>`;
+  display.innerHTML = `
+    <div class="smurf-text">SmerfTV_</div>
+    <p>${randomExcuse}</p>
+  `;
 
   setTimeout(() => {
     spinButton.disabled = false;
