@@ -4,21 +4,19 @@ const excuses = [
   // Dodaj więcej wymówek...
 ];
 
-const overlay = document.getElementById("overlay");
+const slotMachine = document.querySelector(".slot-machine");
+const spinButton = document.getElementById("spin-button");
+const result = document.getElementById("result");
 const excuseDisplay = document.getElementById("excuse");
 const copyButton = document.getElementById("copy-button");
-const backButton = document.getElementById("back-button");
-const spinButton = document.getElementById("spin-button");
+const nextButton = document.getElementById("next-button");
 
 spinButton.addEventListener("click", () => {
   const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
 
   excuseDisplay.textContent = randomExcuse;
-  overlay.classList.add("active");
-});
-
-backButton.addEventListener("click", () => {
-  overlay.classList.remove("active");
+  slotMachine.style.display = "none";
+  result.style.display = "block";
 });
 
 copyButton.addEventListener("click", () => {
@@ -30,3 +28,9 @@ copyButton.addEventListener("click", () => {
   document.execCommand("copy");
   document.body.removeChild(textArea);
 });
+
+nextButton.addEventListener("click", () => {
+  result.style.display = "none";
+  slotMachine.style.display = "block";
+});
+
