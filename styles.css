@@ -1,58 +1,42 @@
 body {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh;
   margin: 0;
   background-color: #000;
 }
 
-.title {
-  color: white;
-  margin: 20px 0 0 20px;
-  font-size: 24px;
-  font-weight: bold;
+.excuse-machine {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
 }
 
-.slot-machine {
-  text-align: center;
-  color: white;
+.excuse {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 20px;
 }
 
-.reel {
-  width: 200px;
-  height: 300px;
-  overflow: hidden;
-  border: 2px solid white;
-  margin: 0 auto;
-  position: relative;
-}
-
-.reel-inner {
-  animation: scroll 5s linear infinite;
-  color: white;
-}
-
-.spin-button {
-  background-color: #f00;
-  color: white;
+.button {
+  background-color: #ff5555;
+  color: #fff;
   border: none;
   padding: 10px 20px;
-  margin-top: 20px;
+  font-size: 16px;
   cursor: pointer;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
 }
 
-.hidden {
-  display: none;
+.button:hover {
+  background-color: #cc0000;
 }
-
-@keyframes scroll {
-  0% {
-    transform: translateY(0);
-  }
-  100% {
-    transform: translateY(-600px);
-  }
-}
-
