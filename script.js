@@ -51,3 +51,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   nextButton.classList.add("hidden");
 });
+
