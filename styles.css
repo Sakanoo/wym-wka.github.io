@@ -19,13 +19,6 @@ body {
   margin: 10px 0;
 }
 
-.button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-top: 20px;
-}
-
 .button {
   background-color: #ff5555;
   color: #fff;
