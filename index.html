@@ -75,6 +75,11 @@
             animation: pulse 1s infinite;
         }
 
+        .button-loading:after {
+            content: ".";
+            animation: dots 1s steps(3, end) infinite;
+        }
+
         @keyframes pulse {
             0% {
                 transform: scale(1);
@@ -87,6 +92,21 @@
             100% {
                 transform: scale(1);
                 background-color: #dc3545;
+            }
+        }
+
+        @keyframes dots {
+            0%, 100% {
+                content: "";
+            }
+            33% {
+                content: ".";
+            }
+            66% {
+                content: "..";
+            }
+            100% {
+                content: "...";
             }
         }
     </style>
@@ -173,13 +193,20 @@
                 let button = document.getElementById("pulsatingButton");
                 isPulsating = true;
                 button.classList.add("pulsating");
-
-                await losuj();
+                button.textContent = "Losowanie";
+                await sleep(1000); // Wait for animation to start
 
                 button.classList.remove("pulsating");
+                button.classList.add("button-loading");
+                
+                await losuj();
+
+                button.classList.remove("button-loading");
+                button.textContent = "Losuj wymówkę";
                 isPulsating = false;
             }
         }
     </script>
 </body>
 </html>
+
