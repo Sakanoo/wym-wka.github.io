@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Bahnschrift, Arial, sans-serif; /* Dodaj Bahnschrift jako pierwszą opcję */
+            font-family: Bahnschrift, Arial, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
@@ -16,7 +16,6 @@
             background-position: center;
             color: white;
         }
-
 
         .container {
             text-align: center;
@@ -56,6 +55,7 @@
             border: none;
             border-radius: 6.25px;
             cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
         }
 
         .gamba-button:hover {
@@ -70,6 +70,25 @@
             font-weight: bold;
             color: #000000;
         }
+
+        .pulsating {
+            animation: pulse 1s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                background-color: #dc3545;
+            }
+            50% {
+                transform: scale(1.05);
+                background-color: #c82333;
+            }
+            100% {
+                transform: scale(1);
+                background-color: #dc3545;
+            }
+        }
     </style>
     <title>WYMÓWKOMAT SMERF</title>
 </head>
@@ -79,11 +98,12 @@
         <div class="wymowka-container" id="wymowkaContainer">
             <p class="wylosowana-wymowka" id="wylosowanaWymowka">LOSUJ SWOJĄ WYMÓWKĘ!</p>
         </div>
-        <button class="gamba-button" onclick="losuj()">Losuj wymówkę</button>
+        <button class="gamba-button" id="pulsatingButton" onclick="startPulsation()">Losuj wymówkę</button>
     </div>
     <script>
+        let isPulsating = false;
         let listaWymowek = [
-                "Mama przyjechała idziemy na jakieś jedzonko",
+    "Mama przyjechała idziemy na jakieś jedzonko",
     "Streama brak bez odbioru",
     "Zapomniałem o badaniach. Jutro streamek 10",
     "Fryzjera miałem",
@@ -146,6 +166,19 @@
             result.textContent = winnerMsg;
             let audio = new Audio("https://cdn.discordapp.com/attachments/1041448220045352992/1145922580046417980/Clown_Horn_Sound_Effect.mp3");
             audio.play();
+        }
+
+        async function startPulsation() {
+            if (!isPulsating) {
+                let button = document.getElementById("pulsatingButton");
+                isPulsating = true;
+                button.classList.add("pulsating");
+
+                await losuj();
+
+                button.classList.remove("pulsating");
+                isPulsating = false;
+            }
         }
     </script>
 </body>
