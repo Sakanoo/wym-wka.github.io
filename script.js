@@ -1,31 +1,56 @@
+const reelInner = document.getElementById("reelInner");
+const spinButton = document.getElementById("spinButton");
+const nextButton = document.getElementById("nextButton");
+
 const excuses = [
-  "Nie mam dzisiaj czasu.",
-  "Techniczne problemy.",
-  // Dodaj więcej wymówek...
+  "Przewidziane przerwy techniczne.",
+  "Pilne zobowiązania rodzinne.",
+  "Nieoczekiwana choroba.",
+  "Nagłe problemy z internetem.",
+  "Wizyta niezapowiedzianych gości.",
+  "Wymagająca sesja treningowa.",
+  "Konieczność załatwienia pilnych spraw.",
+  "Planowane aktualizacje sprzętu.",
+  "Udział w konferencji lub warsztatach.",
+  "Potrzeba odpoczynku i relaksu."
 ];
 
-const slotMachine = document.getElementById("slot-machine");
-const slot = document.getElementById("slot");
-const excuseDisplay = document.getElementById("excuse");
-const result = document.getElementById("result");
-const resultExcuse = document.getElementById("result-excuse");
-const nextButton = document.getElementById("next-button");
-const spinButton = document.getElementById("spin-button");
+let isSpinning = false;
 
-spinButton.addEventListener("click", () => {
-  const randomExcuse = excuses[Math.floor(Math.random() * excuses.length)];
-  excuseDisplay.textContent = randomExcuse;
+function getRandomExcuse() {
+  return excuses[Math.floor(Math.random() * excuses.length)];
+}
 
-  slot.style.animation = "none"; // Resetuje animację
+function spinReel() {
+  if (isSpinning) return;
+
+  isSpinning = true;
+  spinButton.disabled = true;
+  nextButton.classList.add("hidden");
+
+  const spinDuration = 5000;
+  const startPosition = 0;
+  const endPosition = -600;
+
+  reelInner.style.animation = `scroll ${spinDuration}ms linear`;
+  reelInner.style.transform = `translateY(${endPosition}px)`;
+
   setTimeout(() => {
-    slot.style.animation = "spin 5s infinite"; // Uruchamia animację
-    resultExcuse.textContent = randomExcuse;
-    slotMachine.style.display = "none";
-    result.style.display = "block";
-  }, 10); // Opóźnienie, aby animacja się zresetowała
-});
+    isSpinning = false;
+    spinButton.disabled = false;
+    nextButton.classList.remove("hidden");
+
+    reelInner.style.animation = "";
+    reelInner.style.transform = `translateY(${startPosition}px)`;
+  }, spinDuration);
+}
+
+spinButton.addEventListener("click", spinReel);
 
 nextButton.addEventListener("click", () => {
-  result.style.display = "none";
-  slotMachine.style.display = "block";
+  const excuse = getRandomExcuse();
+  reelInner.innerHTML = `<p>${excuse}</p>`;
+  nextButton.classList.add("hidden");
 });
+
+nextButton.classList.add("hidden");
