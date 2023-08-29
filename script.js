@@ -4,7 +4,7 @@ const excuses = [
   // Dodaj kolejne wymówki tutaj
 ];
 
-const excuseDisplay = document.getElementById("excuseDisplay");
+const slot = document.getElementById("slot1");
 const generateButton = document.getElementById("generateButton");
 
 let isAnimating = false;
@@ -14,15 +14,19 @@ generateButton.addEventListener("click", () => {
   if (isAnimating) return;
   isAnimating = true;
 
+  const startTime = Date.now();
+  const animationDuration = 2000; // ms
+  const interval = 100; // ms
   let animationInterval = setInterval(() => {
-    const randomIndex = Math.floor(Math.random() * excuses.length);
-    excuseDisplay.textContent = excuses[randomIndex];
-  }, 50);
-
-  setTimeout(() => {
-    clearInterval(animationInterval);
-    currentExcuseIndex = Math.floor(Math.random() * excuses.length);
-    excuseDisplay.textContent = excuses[currentExcuseIndex];
-    isAnimating = false;
-  }, 1000);
+    const elapsedTime = Date.now() - startTime;
+    if (elapsedTime < animationDuration) {
+      const randomIndex = Math.floor(Math.random() * excuses.length);
+      slot.textContent = excuses[randomIndex];
+    } else {
+      clearInterval(animationInterval);
+      currentExcuseIndex = Math.floor(Math.random() * excuses.length);
+      slot.textContent = excuses[currentExcuseIndex];
+      isAnimating = false;
+    }
+  }, interval);
 });
