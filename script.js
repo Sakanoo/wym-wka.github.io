@@ -6,18 +6,23 @@ const excuses = [
 
 const excuseDisplay = document.getElementById("excuseDisplay");
 const generateButton = document.getElementById("generateButton");
-const nextButton = document.getElementById("nextButton");
 
+let isAnimating = false;
 let currentExcuseIndex = -1;
 
 generateButton.addEventListener("click", () => {
-  currentExcuseIndex = Math.floor(Math.random() * excuses.length);
-  excuseDisplay.textContent = excuses[currentExcuseIndex];
-  nextButton.disabled = false;
-});
+  if (isAnimating) return;
+  isAnimating = true;
 
-nextButton.addEventListener("click", () => {
-  currentExcuseIndex = (currentExcuseIndex + 1) % excuses.length;
-  excuseDisplay.textContent = excuses[currentExcuseIndex];
-});
+  let animationInterval = setInterval(() => {
+    const randomIndex = Math.floor(Math.random() * excuses.length);
+    excuseDisplay.textContent = excuses[randomIndex];
+  }, 50);
 
+  setTimeout(() => {
+    clearInterval(animationInterval);
+    currentExcuseIndex = Math.floor(Math.random() * excuses.length);
+    excuseDisplay.textContent = excuses[currentExcuseIndex];
+    isAnimating = false;
+  }, 1000);
+});
