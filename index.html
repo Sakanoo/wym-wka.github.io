@@ -1,22 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles.css">
-  <title>Wymówki na brak streama</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Generator Wymówek</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1 class="title">LOSOWANIE WYMÓWEK</h1>
-  <div class="slot-machine">
-    <div class="reel">
-      <div class="reel-inner" id="reelInner">
-        <!-- Tutaj będziemy wstawiać wylosowane wymówki -->
-      </div>
-    </div>
-    <button id="spinButton" class="spin-button">Losuj</button>
-    <button id="nextButton" class="spin-button hidden">Losuj Dalej</button>
+<div class="excuse-machine">
+  <div class="excuse" id="excuseDisplay">Naciśnij "Losuj" aby wygenerować wymówkę.</div>
+  <div class="button-container">
+    <button class="button" id="generateButton">Losuj</button>
+    <button class="button" id="nextButton" disabled>Losuj dalej</button>
   </div>
-  <script src="script.js"></script>
+</div>
+<script src="script.js"></script>
 </body>
 </html>
