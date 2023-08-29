@@ -8,12 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "Pilne zobowiązania rodzinne.",
     "Nieoczekiwana choroba.",
     "Nagłe problemy z internetem.",
-    "Wizyta niezapowiedzianych gości.",
-    "Wymagająca sesja treningowa.",
-    "Konieczność załatwienia pilnych spraw.",
-    "Planowane aktualizacje sprzętu.",
-    "Udział w konferencji lub warsztatach.",
-    "Potrzeba odpoczynku i relaksu."
+    "Wizyta niezapowiedzianych gości."
   ];
 
   let isSpinning = false;
