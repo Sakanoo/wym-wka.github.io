@@ -1,18 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Generator Wymówek</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-image: url("https://media.discordapp.net/attachments/1104954426378178694/1145915828412366889/Bez_nazwy.png?width=1638&height=910");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 25px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 80%;
+        }
+
+        .title {
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .wymowka-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 25px;
+            background-color: #f9f9f9;
+            border-radius: 12.5px;
+            width: 100%;
+            box-sizing: border-box;
+            border: 2px solid #000000;
+            margin-bottom: 20px; /* Odstęp między obramowaniem a przyciskiem */
+        }
+
+        .gamba-button {
+            padding: 12.5px 25px;
+            font-size: 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            border-radius: 6.25px;
+            cursor: pointer;
+        }
+
+        .winner {
+            font-size: 20px;
+        }
+
+        .wylosowana-wymowka {
+            font-weight: bold;
+            color: #000000;
+        }
+    </style>
+    <title>Wymówki na brak streama</title>
 </head>
 <body>
-<div class="excuse-machine">
-  <div class="slot-machine">
-    <div class="slot" id="slot1">Naciśnij "Losuj" aby wygenerować wymówkę.</div>
-  </div>
-  <button class="button" id="generateButton">Losuj</button>
-</div>
-<script src="script.js"></script>
+    <div class="container">
+        <div class="title">WYMÓWKOMAT DLA SMERFA</div>
+        <div class="wymowka-container" id="wymowkaContainer">
+            <p class="wylosowana-wymowka" id="wylosowanaWymowka">Wymówka pojawi się tutaj</p>
+        </div>
+        <button class="gamba-button" onclick="losuj()">Losuj wymówkę</button>
+    </div>
+    <script>
+        let listaWymowek = [
+                "Dziś wolne",
+    "Siostra przyjechała idziemy na jakieś jedzonko",
+    "Demonz przyjechał do Krakowa idziemy na sloty",
+    "Streama brak bez odbioru",
+    "Lekarz na 18...",
+    "Fryzjera miałem streama brak!",
+    "Dopiero wstałem...",
+    "Grałem w POE do 11",
+    "Ja pierdole... Chyba się czymś zatrułem",
+    "mapki do 14 robiłem",
+    "Nie wiem rozjebany sen mam musze to jakoś naprawić",
+    "Siostra dalej jest wychodzimy widzimy sie jutro",
+    "idziemy z Ryszardem do weterynaża stream jutro",
+    "zapłaciłem w końcu za internet bo odcieli ale oddali dopiero po 22",
+    "W diablo gram",
+    "Wstaje, patrze, a tam 22",
+    "Dziś dentysta",
+    "Kolejna wizyta u dentysty widzowie, ta babka ostatnio tylko bardziej mi tego zęba rozjebała",
+    "no jak to tak 3 streamy z rzędu?",
+    "japierdole... dosłownie na chwilę zamknąłem oczy otwieram a tu 23",
+    "miał być jeden rankedzik a tu 22. Do jutra widzowie",
+    "delord przyjeżdża idziemy na jakieś jedzonko",
+    "alerty ustawiam",
+    "nie mogłem spać naprawię sobie sen widzimy sie jutro",
+    "idę na badania",
+    "już miałem odpalić ale włączyłem lineage i tak jakoś wyszło",
+    "39 stopni...",
+    "urodziny ma siostra do jutra",
+    "urodziny ma mama bez odbioru",
+    "dziś spędzamy czas z truskawkową bez odbioru",
+    "znajomy przyjechał do krakowa z którym dawno się nie widziałem",
+    "rangę w valo odbijałem całą noc",
+    "do 10 w aimlaba grałem, czuje taki progres widzowie jak nigdy, lecimy po immortala",
+    "pospałem jak nigdy. Stream jutro!",
+    "dziś już zdrowy ale muszę się zregenerować, widzimy się jutro",
+    "idziemy do kina z Kasią. Bez odbioru",
+    "Zjadłem wczoraj starą cebule i smród nie do wytrzymania dziś bez streama.",
+    "Speedrunowałem akt 1 poe do 15, dziś bez streama.",
+    "Do 16 builda szukałem na nowy sezon poe, dziś bez streama.",
+    "Mam pająka w pokoju nie da rady odpalić.",
+    "Dzisiaj 36.7 widzowie nie da rady odpalić.",
+    "No i nie ma streama. Chciałem Matiemu odpisać i zalałem klawiaturę. Dzięki Mati...",
+    "No co ja wam powiem... Nie chce mi się :/",
+    "W sklepie byłem, sił brak, do jutra!",
+    "!nuke Zamieszki 15m 15m",
+    "Siema jadłem KFC i tak mnie na pierdy ciśnie że hej, siarki chyba dodają do panierki.",
+    "Kurwa kole wylałem...",
+    "wszystkie placementy wjebane odbijam rangę bez odbioru",
+    "Dzisiaj piątek",
+    "Event w entropii dziś bez streama",
+    "Kasia nie obudziła dopiero wstałem stream jutro",
+    "byłem wczoraj na tej siłowni robiłem przysiady i tak mi coś jebło w kręgosłupie, że usiedzieć nie mogę...",
+    "pisali do mnie z klanu w entropce, musymy bronić planety. Bez odbioru."
+        ];
+
+        let wymowkiContainer = document.getElementById("wymowkaContainer");
+        let listaWymowekCount = listaWymowek.length;
+        let winnerMsg = "";
+        let result = document.querySelector("#wylosowanaWymowka");
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function losuj() {
+            let y = 0;
+            let animationDuration = 3000;
+            let startTime = Date.now();
+            
+            while (Date.now() - startTime < animationDuration) {
+                y = Math.floor(Math.random() * listaWymowekCount);
+                winnerMsg = listaWymowek[y];
+                result.textContent = winnerMsg;
+                await sleep(100);
+            }
+
+            result.textContent = winnerMsg;
+        }
+    </script>
 </body>
 </html>
