@@ -14,12 +14,13 @@
             background-image: url("https://media.discordapp.net/attachments/1104954426378178694/1145915828412366889/Bez_nazwy.png?width=1638&height=910");
             background-size: cover;
             background-position: center;
+            color: white;
         }
 
         .container {
             text-align: center;
             padding: 25px;
-            background-color: #ffffff;
+            background-color: #000000;
             border-radius: 15px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             max-width: 500px;
@@ -38,11 +39,11 @@
             align-items: center;
             flex-direction: column;
             padding: 25px;
-            background-color: #f9f9f9;
+            background-color: #ffffff;
             border-radius: 12.5px;
             width: 100%;
             box-sizing: border-box;
-            border: 2px solid #000000;
+            border: 2px solid #ffffff;
             margin-bottom: 20px; /* Odstęp między obramowaniem a przyciskiem */
         }
 
@@ -54,6 +55,10 @@
             border: none;
             border-radius: 6.25px;
             cursor: pointer;
+        }
+
+        .gamba-button:hover {
+            background-color: #c82333;
         }
 
         .winner {
@@ -77,8 +82,7 @@
     </div>
     <script>
         let listaWymowek = [
-                "Dziś wolne",
-    "Mama przyjechała idziemy na jakieś jedzonko",
+                "Mama przyjechała idziemy na jakieś jedzonko",
     "Streama brak bez odbioru",
     "Zapomniałem o badaniach. Jutro streamek 10",
     "Fryzjera miałem",
