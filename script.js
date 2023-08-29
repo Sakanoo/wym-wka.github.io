@@ -54,3 +54,4 @@ nextButton.addEventListener("click", () => {
 });
 
 nextButton.classList.add("hidden");
+</body>
