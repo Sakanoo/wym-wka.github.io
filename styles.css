@@ -5,6 +5,7 @@ body {
   height: 100vh;
   margin: 0;
   background-color: #000;
+  font-family: "Bahnschrift", sans-serif;
 }
 
 .excuse-machine {
@@ -14,9 +15,20 @@ body {
   color: #fff;
 }
 
-.excuse {
+.slot-machine {
+  display: inline-block;
+  margin: 20px;
+  padding: 10px;
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.slot {
   font-size: 24px;
-  margin: 10px 0;
+  line-height: 1.5;
+  height: 36px;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
 .button {
