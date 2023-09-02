@@ -111,6 +111,14 @@
         }
     </style>
     <title>WYMÓWKOMAT SMERF</title>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=TWOJE_ID"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'TWOJE_ID');
 </head>
 <body>
     <!-- Google Tag Manager (noscript) -->
@@ -125,6 +133,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button class="gamba-button" id="pulsatingButton" onclick="startPulsation()">Losuj wymówkę</button>
     </div>
     <script>
+
         let isPulsating = false;
         let listaWymowek = [
     "Mama przyjechała idziemy na jakieś jedzonko",
