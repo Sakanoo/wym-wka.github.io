@@ -109,6 +109,26 @@
                 content: "...";
             }
         }
+
+        
+        .info-modal {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .info-modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
     </style>
     <title>WYMÓWKOMAT SMERF</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQ4G2MS3SX"></script>
@@ -122,28 +142,31 @@
     </script>
 </head>
 <body>
-   
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQ4G2MS3SX"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-LQ4G2MS3SX');
     </script>
     <!-- Google Tag Manager -->
     <script>
-        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        (function(w,d,s,l,i){
+            w[l]=w[l]||[];
+            w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+            var f=d.getElementsByTagName(s)[0],
+            j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+            j.async=true;
+            j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+            f.parentNode.insertBefore(j,f);
         })(window,document,'script','dataLayer','GTM-MD4J3VF2');
     </script>
     <!-- End Google Tag Manager -->
     <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD4J3VF2"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MD4J3VF2" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
     <div class="container">
         <div class="title">WYMÓWKOMAT DLA SMERFA</div>
@@ -156,43 +179,43 @@
     <script>
         let isPulsating = false;
         let listaWymowek = [
-    "Mama przyjechała idziemy na jakieś jedzonko",
-    "Streama brak bez odbioru",
-    "Zapomniałem o badaniach. Jutro streamek 10",
-    "Fryzjera miałem",
-    "Dopiero wstałem, jutro stream",
-    "Grałem w rp do 11",
-    "Ja pierdole... Chyba się czymś zatrułem",
-    "Rozjebałem sobie sen, muszę iść spać",
-    "zmieniam mieszkanie, stream za tydzień",
-    "uczę się, nie mogę",
-    "Wstaje, patrze, a tam 22",
-    "Dzisiaj dentysta",
-    "Znowu muszę do dentysty. Ostatnim razem rozjebał mi czwórkę",
-    "za dużo streamków w tym tygodniu",
-    "pojechałem na carzone'a a tam policja i mnie złapali",
-    "ustawiam obs a",
-    "nie mogłem spać",
-    "idę na badania",
-    "źle się czuje widzowie, pochlałem",
-    "Stream jutro jak coś",
-    "urodziny ma pies do jutra",
-    "dziś spędzamy czas z Menders bez odbioru",
-    "znajomy przyjechał do Warszawy z którym dawno się nie widziałem",
-    "pospałem jak nigdy. Stream jutro!",
-    "Jestem już zdrowy ale jeszcze muszę odpocząć. streamer jutro widzowie o 10",
-    "Mam pająka w pokoju.",
-    "mam 36.7 stopni.Nie dam rady widzowie",
-    "Zajebałem kime w autobusie i obudziłem się po drugiej stronie Warszawy. Niesamowite widzowie",
-    "No co ja wam powiem... Nie chce mi się :/",
-    "Siema jadłem KFC i brzuch mnie bouli",
-    "znowu wylałem wode na biurko.",
-    "Jem",
-    "Mam trening",
-    "przygotowuje się do move z grubym",
-    "byłem wczoraj na tej siłowni robiłem przysiady i tak mi coś jebło w kręgosłupie, że usiedzieć nie mogę",
-    "ustawiam aparat, dzisiaj nie da rady",
-    "Jestem za mało doświetlony, streamek odwołany. widzimy się za rok"
+            "Mama przyjechała idziemy na jakieś jedzonko",
+            "Streama brak bez odbioru",
+            "Zapomniałem o badaniach. Jutro streamek 10",
+            "Fryzjera miałem",
+            "Dopiero wstałem, jutro stream",
+            "Grałem w rp do 11",
+            "Ja pierdole... Chyba się czymś zatrułem",
+            "Rozjebałem sobie sen, muszę iść spać",
+            "zmieniam mieszkanie, stream za tydzień",
+            "uczę się, nie mogę",
+            "Wstaje, patrze, a tam 22",
+            "Dzisiaj dentysta",
+            "Znowu muszę do dentysty. Ostatnim razem rozjebał mi czwórkę",
+            "za dużo streamków w tym tygodniu",
+            "pojechałem na carzone'a a tam policja i mnie złapali",
+            "ustawiam obs a",
+            "nie mogłem spać",
+            "idę na badania",
+            "źle się czuje widzowie, pochlałem",
+            "Stream jutro jak coś",
+            "urodziny ma pies do jutra",
+            "dziś spędzamy czas z Menders bez odbioru",
+            "znajomy przyjechał do Warszawy z którym dawno się nie widziałem",
+            "pospałem jak nigdy. Stream jutro!",
+            "Jestem już zdrowy ale jeszcze muszę odpocząć. streamer jutro widzowie o 10",
+            "Mam pająka w pokoju.",
+            "mam 36.7 stopni.Nie dam rady widzowie",
+            "Zajebałem kime w autobusie i obudziłem się po drugiej stronie Warszawy. Niesamowite widzowie",
+            "No co ja wam powiem... Nie chce mi się :/",
+            "Siema jadłem KFC i brzuch mnie bouli",
+            "znowu wylałem wode na biurko.",
+            "Jem",
+            "Mam trening",
+            "przygotowuje się do move z grubym",
+            "byłem wczoraj na tej siłowni robiłem przysiady i tak mi coś jebło w kręgosłupie, że usiedzieć nie mogę",
+            "ustawiam aparat, dzisiaj nie da rady",
+            "Jestem za mało doświetlony, streamek odwołany. widzimy się za rok"
         ];
 
         let wymowkiContainer = document.getElementById("wymowkaContainer");
@@ -227,7 +250,8 @@
                 isPulsating = true;
                 button.classList.add("pulsating");
                 button.textContent = "Losowanie";
-                await sleep(1000);
+                await sleep(1000); 
+
                 button.classList.remove("pulsating");
                 button.classList.add("button-loading");
                 
@@ -238,6 +262,26 @@
                 isPulsating = false;
             }
         }
+
+        
+        window.onload = function() {
+            let infoModal = document.getElementById("infoModal");
+            infoModal.style.display = "block";
+        }
+
+        
+        function closeInfoModal() {
+            let infoModal = document.getElementById("infoModal");
+            infoModal.style.display = "none";
+        }
     </script>
+    <!-- Okno informacyjne -->
+    <div id="infoModal" class="info-modal">
+        <div class="info-modal-content">
+            <h2>Informacja o cookies</h2>
+            <p>Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszej jakości usług. Kontynuując korzystanie z serwisu, zgadzasz się na to.</p>
+            <button onclick="closeInfoModal()">Zgadzam się</button>
+        </div>
+    </div>
 </body>
 </html>
