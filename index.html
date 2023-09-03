@@ -112,22 +112,39 @@
 
         
         .info-modal {
-            display: none;
-            justify-content: center;
-            align-items: center;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5);
+            bottom: 10px;
+            left: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            z-index: 9999;
         }
 
         .info-modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .info-modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .info-button {
+            padding: 5px 10px;
+            font-size: 16px;
+            background-color: gray;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .info-button:hover {
+            background-color: #555;
         }
     </style>
     <title>WYMÓWKOMAT SMERF</title>
@@ -274,13 +291,22 @@
             let infoModal = document.getElementById("infoModal");
             infoModal.style.display = "none";
         }
+
+        
+        function redirectToGoogle() {
+            window.location.href = "https://google.com";
+        }
     </script>
+
     <!-- Okno informacyjne -->
     <div id="infoModal" class="info-modal">
         <div class="info-modal-content">
             <h2>Informacja o cookies</h2>
             <p>Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszej jakości usług. Kontynuując korzystanie z serwisu, zgadzasz się na to.</p>
-            <button onclick="closeInfoModal()">Zgadzam się</button>
+            <div class="info-modal-buttons">
+                <button class="info-button" onclick="closeInfoModal()">Zgadzam się</button>
+                <button class="info-button" onclick="redirectToGoogle()">Nie zgadzam się</button>
+            </div>
         </div>
     </div>
 </body>
