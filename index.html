@@ -203,4 +203,124 @@
     <div class="container">
         <div class="title">WYMÓWKOMAT DLA SMERFA</div>
         <div class="wymowka-container" id="wymowkaContainer">
-            <p class="wylosowana-wymowka" id="wylosowanaWymowka">LOSUJ SWOJĄ W
+            <p class="wylosowana-wymowka" id="wylosowanaWymowka">LOSUJ SWOJĄ WYMÓWKĘ!</p>
+        </div>
+        <button class="gamba-button" id="pulsatingButton" onclick="startPulsation()">Losuj wymówkę</button>
+    </div>
+    <script>
+        let isPulsating = false;
+        let listaWymowek = [
+            "Mama przyjechała idziemy na jakieś jedzonko",
+            "Streama brak bez odbioru",
+            "Zapomniałem o badaniach. Jutro streamek 10",
+            "Fryzjera miałem",
+            "Dopiero wstałem, jutro stream",
+            "Grałem w rp do 11",
+            "Ja pierdole... Chyba się czymś zatrułem",
+            "Rozjebałem sobie sen, muszę iść spać",
+            "zmieniam mieszkanie, stream za tydzień",
+            "uczę się, nie mogę",
+            "Wstaje, patrze, a tam 22",
+            "Dzisiaj dentysta",
+            "Znowu muszę do dentysty. Ostatnim razem rozjebał mi czwórkę",
+            "za dużo streamków w tym tygodniu",
+            "pojechałem na carzone'a a tam policja i mnie złapali",
+            "ustawiam obs a",
+            "nie mogłem spać",
+            "idę na badania",
+            "źle się czuje widzowie, pochlałem",
+            "Stream jutro jak coś",
+            "urodziny ma pies do jutra",
+            "dziś spędzamy czas z Menders bez odbioru",
+            "znajomy przyjechał do Warszawy z którym dawno się nie widziałem",
+            "pospałem jak nigdy. Stream jutro!",
+            "Jestem już zdrowy ale jeszcze muszę odpocząć. streamer jutro widzowie o 10",
+            "Mam pająka w pokoju.",
+            "mam 36.7 stopni.Nie dam rady widzowie",
+            "Zajebałem kime w autobusie i obudziłem się po drugiej stronie Warszawy. Niesamowite widzowie",
+            "No co ja wam powiem... Nie chce mi się :/",
+            "Siema jadłem KFC i brzuch mnie bouli",
+            "znowu wylałem wode na biurko.",
+            "Jem",
+            "Mam trening",
+            "przygotowuje się do move z grubym",
+            "byłem wczoraj na tej siłowni robiłem przysiady i tak mi coś jebło w kręgosłupie, że usiedzieć nie mogę",
+            "ustawiam aparat, dzisiaj nie da rady",
+            "Jestem za mało doświetlony, streamek odwołany. widzimy się za rok"
+        ];
+
+        let wymowkiContainer = document.getElementById("wymowkaContainer");
+        let listaWymowekCount = listaWymowek.length;
+        let winnerMsg = "";
+        let result = document.querySelector("#wylosowanaWymowka");
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        async function losuj() {
+            let y = 0;
+            let animationDuration = 3000;
+            let startTime = Date.now();
+
+            while (Date.now() - startTime < animationDuration) {
+                y = Math.floor(Math.random() * listaWymowekCount);
+                winnerMsg = listaWymowek[y];
+                result.textContent = winnerMsg;
+                await sleep(100);
+            }
+
+            result.textContent = winnerMsg;
+            let audio = new Audio("https://cdn.discordapp.com/attachments/1131572707083960411/1146527255015723199/audio.wav");
+            audio.play();
+        }
+
+        async function startPulsation() {
+            if (!isPulsating) {
+                let button = document.getElementById("pulsatingButton");
+                isPulsating = true;
+                button.classList.add("pulsating");
+                button.textContent = "Losowanie";
+                await sleep(1000); // Wait for animation to start
+
+                button.classList.remove("pulsating");
+                button.classList.add("button-loading");
+
+                await losuj();
+
+                button.classList.remove("button-loading");
+                button.textContent = "Losuj wymówkę";
+                isPulsating = false;
+            }
+        }
+
+        // Wyświetlenie okna informacyjnego po załadowaniu strony
+        window.onload = function() {
+            let infoModal = document.getElementById("infoModal");
+            infoModal.style.display = "block";
+        }
+
+        // Funkcja do ukrywania okna informacyjnego
+        function closeInfoModal() {
+            let infoModal = document.getElementById("infoModal");
+            infoModal.style.display = "none";
+        }
+
+        // Przekierowanie na Google po kliknięciu "Nie zgadzam się"
+        function redirectToGoogle() {
+            window.location.href = "https://google.com";
+        }
+    </script>
+
+    <!-- Okno informacyjne -->
+    <div id="infoModal" class="info-modal">
+        <h2>Informacje o cookies</h2>
+        <p>Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszej jakości usług.</p>
+        <p>Kontynuując korzystanie z serwisu, zgadzasz się na to.</p>
+        <div class="info-modal-buttons">
+            <button class="info-button" onclick="closeInfoModal()">Zgadzam się</button>
+            <button class="info-button" onclick="redirectToGoogle()">Nie zgadzam się</button>
+        </div>
+    </div>
+</body>
+</html>
