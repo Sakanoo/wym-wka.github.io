@@ -110,12 +110,13 @@
             }
         }
 
-        
+        /* Stylizacja okna informacyjnego */
         .info-modal {
             position: fixed;
             bottom: 10px;
             left: 10px;
-            background-color: #f0f0f0;
+            background-color: #000000; /* Czarne tło */
+            color: white; /* Biały napis */
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             z-index: 9999;
@@ -267,7 +268,7 @@
                 isPulsating = true;
                 button.classList.add("pulsating");
                 button.textContent = "Losowanie";
-                await sleep(1000); 
+                await sleep(1000); // Wait for animation to start
 
                 button.classList.remove("pulsating");
                 button.classList.add("button-loading");
@@ -280,19 +281,19 @@
             }
         }
 
-        
+        // Wyświetlenie okna informacyjnego po załadowaniu strony
         window.onload = function() {
             let infoModal = document.getElementById("infoModal");
             infoModal.style.display = "block";
         }
 
-        
+        // Funkcja do ukrywania okna informacyjnego
         function closeInfoModal() {
             let infoModal = document.getElementById("infoModal");
             infoModal.style.display = "none";
         }
 
-        
+        // Przekierowanie na Google po kliknięciu "Nie zgadzam się"
         function redirectToGoogle() {
             window.location.href = "https://google.com";
         }
