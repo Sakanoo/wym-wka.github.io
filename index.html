@@ -120,18 +120,29 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
             z-index: 9999;
+            width: 200px; /* Szerokość okna */
+            height: 200px; /* Wysokość okna */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
         }
 
-        .info-modal-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
+        .info-modal h2 {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .info-modal p {
+            font-size: 16px;
+            margin-top: 10px;
         }
 
         .info-modal-buttons {
             display: flex;
             gap: 10px;
+            margin-top: 20px;
         }
 
         .info-button {
@@ -193,7 +204,6 @@
         </div>
         <button class="gamba-button" id="pulsatingButton" onclick="startPulsation()">Losuj wymówkę</button>
     </div>
-    <!-- JavaScript -->
     <script>
         let isPulsating = false;
         let listaWymowek = [
@@ -249,7 +259,7 @@
             let y = 0;
             let animationDuration = 3000;
             let startTime = Date.now();
-            
+
             while (Date.now() - startTime < animationDuration) {
                 y = Math.floor(Math.random() * listaWymowekCount);
                 winnerMsg = listaWymowek[y];
@@ -272,7 +282,7 @@
 
                 button.classList.remove("pulsating");
                 button.classList.add("button-loading");
-                
+
                 await losuj();
 
                 button.classList.remove("button-loading");
@@ -301,13 +311,12 @@
 
     <!-- Okno informacyjne -->
     <div id="infoModal" class="info-modal">
-        <div class="info-modal-content">
-            <h2>Informacja o cookies</h2>
-            <p>Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszej jakości usług. Kontynuując korzystanie z serwisu, zgadzasz się na to.</p>
-            <div class="info-modal-buttons">
-                <button class="info-button" onclick="closeInfoModal()">Zgadzam się</button>
-                <button class="info-button" onclick="redirectToGoogle()">Nie zgadzam się</button>
-            </div>
+        <h2>Informacje o cookies</h2>
+        <p>Ta strona wykorzystuje pliki cookie w celu zapewnienia najlepszej jakości usług.</p>
+        <p>Kontynuując korzystanie z serwisu, zgadzasz się na to.</p>
+        <div class="info-modal-buttons">
+            <button class="info-button" onclick="closeInfoModal()">Zgadzam się</button>
+            <button class="info-button" onclick="redirectToGoogle()">Nie zgadzam się</button>
         </div>
     </div>
 </body>
